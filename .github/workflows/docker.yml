@@ -18,4 +18,5 @@ jobs:
       run: docker build -t test-projem .
 
     - name: Container içinde testleri çalıştır
-      run: docker run test-projem
+      run: docker run test-projem pytest --cov=app --cov-report=term-missing
+
