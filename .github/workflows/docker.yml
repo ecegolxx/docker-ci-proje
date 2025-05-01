@@ -1,0 +1,21 @@
+name: Docker CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  docker-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Repo'yu klonla
+      uses: actions/checkout@v3
+
+    - name: Docker image'ı build et
+      run: docker build -t test-projem .
+
+    - name: Container içinde testleri çalıştır
+      run: docker run test-projem
